@@ -37,6 +37,8 @@ module.exports = {
       "blue-700": "#3C43D5",
       yellow: "#EEC142",
       gray: "#EFEFEF",
+      transparent: "transparent",
+      blackGray: "#626262",
     },
     fontSize: {
       sm: "19px",
@@ -53,6 +55,7 @@ module.exports = {
       negative: "-1",
       2: "2",
       10: "10",
+      50: "50",
     },
     rotate: {
       178: "178deg",

@@ -4,4 +4,13 @@
 
 body {
   font-family: "Cabin", sans-serif;
+  scroll-behavior: smooth;
+}
+
+#list ul {
+  list-style: disc;
+  list-style-position: inside;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
 }
