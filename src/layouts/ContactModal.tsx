@@ -37,124 +37,126 @@ const ContactModal = ({ formation }: { formation: Tarticle[] }) => {
 
   return (
     <section className="fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-white/[86%]">
-      <div></div>
-      <div className="relative w-fit rounded-32 bg-blue px-[85px] py-[47px] text-white">
-        <X className="absolute right-5 top-5 cursor-pointer" />
-        <h2 className="mx-auto text-center text-xl font-normal leading-none">
-          Information du / des participants à la formation :
-        </h2>
-        <strong className="mx-auto mb-[49px] flow-root w-fit text-center text-md font-normal">
-          {data.title}
-        </strong>
-        <Formik
-          initialValues={initialValues}
-          validationSchema={toFormikValidationSchema(validationSchema)}
-          onSubmit={(values) => console.log(values)}
-        >
-          {({ errors, touched }) => (
-            <Form>
-              <div>
-                <Field
-                  placeholder="Votre nom / Prénom*"
-                  className={`${
-                    errors.username && touched.username
-                      ? "border-red"
-                      : "border-black"
-                  } text-black`}
-                  name="username"
-                />
-                <ErrorMessage name="username" />
-              </div>
-              <div>
-                <Field
-                  placeholder="Email*"
-                  className="text-black"
-                  type="email"
-                  name="email"
-                />
-                <ErrorMessage name="email" />
-              </div>
-              <div>
-                <Field
-                  placeholder="Société*"
-                  className="text-black"
-                  name="society"
-                />
-                <ErrorMessage name="society" />
-              </div>
-              <div>
-                <label htmlFor="Participants">Nombre de participant(s)</label>
-                <Field
-                  className="text-black"
-                  type="number"
-                  name="participants"
-                  min="1"
-                />
-                <ErrorMessage name="participants" />
-              </div>
-              <div>
-                <Field
-                  className="text-black"
-                  placeholder="Adresse*"
-                  name="addresse"
-                />
-                <ErrorMessage name="addresse" />
-              </div>
-              <fieldset>
-                <legend>Mode de formation préférentiel* : </legend>
-                <label htmlFor="presentiel">
+      <div className="relative h-fit w-fit">
+        <div className="absolute bottom-[-15px] right-[-20px] h-full w-full rounded-[85px] border border-blue bg-white"></div>
+        <div className="relative w-fit rounded-[85px] bg-blue px-[85px] py-[47px] text-white">
+          <X className="absolute right-5 top-5 cursor-pointer" />
+          <h2 className="mx-auto text-center text-xl font-normal leading-none">
+            Information du / des participants à la formation :
+          </h2>
+          <strong className="mx-auto mb-[49px] flow-root w-fit text-center text-md font-normal">
+            {data.title}
+          </strong>
+          <Formik
+            initialValues={initialValues}
+            validationSchema={toFormikValidationSchema(validationSchema)}
+            onSubmit={(values) => console.log(values)}
+          >
+            {({ errors, touched }) => (
+              <Form>
+                <div>
+                  <Field
+                    placeholder="Votre nom / Prénom*"
+                    className={`${
+                      errors.username && touched.username
+                        ? "border-red"
+                        : "border-black"
+                    } text-black`}
+                    name="username"
+                  />
+                  <ErrorMessage name="username" />
+                </div>
+                <div>
+                  <Field
+                    placeholder="Email*"
+                    className="text-black"
+                    type="email"
+                    name="email"
+                  />
+                  <ErrorMessage name="email" />
+                </div>
+                <div>
+                  <Field
+                    placeholder="Société*"
+                    className="text-black"
+                    name="society"
+                  />
+                  <ErrorMessage name="society" />
+                </div>
+                <div>
+                  <label htmlFor="Participants">Nombre de participant(s)</label>
                   <Field
                     className="text-black"
-                    type="radio"
-                    name="presence"
-                    value="Présentiel"
+                    type="number"
+                    name="participants"
+                    min="1"
                   />
-                  Présentiel
-                </label>
-                <label htmlFor="distanciel">
+                  <ErrorMessage name="participants" />
+                </div>
+                <div>
                   <Field
                     className="text-black"
-                    type="radio"
-                    name="presence"
-                    value="Distanciel"
+                    placeholder="Adresse*"
+                    name="addresse"
                   />
-                  Distanciel
-                </label>
-                <label htmlFor="sansPreference">
+                  <ErrorMessage name="addresse" />
+                </div>
+                <fieldset>
+                  <legend>Mode de formation préférentiel* : </legend>
+                  <label htmlFor="presentiel">
+                    <Field
+                      className="text-black"
+                      type="radio"
+                      name="presence"
+                      value="Présentiel"
+                    />
+                    Présentiel
+                  </label>
+                  <label htmlFor="distanciel">
+                    <Field
+                      className="text-black"
+                      type="radio"
+                      name="presence"
+                      value="Distanciel"
+                    />
+                    Distanciel
+                  </label>
+                  <label htmlFor="sansPreference">
+                    <Field
+                      className="text-black"
+                      type="radio"
+                      name="presence"
+                      value="Sans préférence"
+                    />
+                    Sans préférence
+                  </label>
+                </fieldset>
+                <div>
                   <Field
                     className="text-black"
-                    type="radio"
-                    name="presence"
-                    value="Sans préférence"
+                    as="textarea"
+                    name="message"
+                    placeholter="Informations complémentaires (secteur d'activité, date souhaitée, etc.)"
                   />
-                  Sans préférence
-                </label>
-              </fieldset>
-              <div>
-                <Field
-                  className="text-black"
-                  as="textarea"
-                  name="message"
-                  placeholter="Informations complémentaires (secteur d'activité, date souhaitée, etc.)"
-                />
-                <ErrorMessage name="message" />
-              </div>
-              <div>
-                <Field
-                  className="text-black"
-                  type="checkbox"
-                  name="consent"
-                  placeholder="Informations complémentaires (secteur d'activité, date souhaitée, etc.)"
-                />
-                <label htmlFor="consent">
-                  J’accepte que mes informations soient traitées et conservées
-                  dans le cadre de ma demande de formation.
-                </label>
-                <ErrorMessage name="consent" />
-              </div>
-            </Form>
-          )}
-        </Formik>
+                  <ErrorMessage name="message" />
+                </div>
+                <div>
+                  <Field
+                    className="text-black"
+                    type="checkbox"
+                    name="consent"
+                    placeholder="Informations complémentaires (secteur d'activité, date souhaitée, etc.)"
+                  />
+                  <label htmlFor="consent">
+                    J’accepte que mes informations soient traitées et conservées
+                    dans le cadre de ma demande de formation.
+                  </label>
+                  <ErrorMessage name="consent" />
+                </div>
+              </Form>
+            )}
+          </Formik>
+        </div>
       </div>
     </section>
   );
