@@ -1,12 +1,19 @@
+import { RootState } from "@/app/store";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Tarticle } from "@/features/posts/formationSlice";
+import { useSelector } from "react-redux";
 
 const HeroBanner = ({ formation }: { formation: Tarticle[] }) => {
   const data = formation[0];
-  console.log(data);
+  const scroll = useSelector((state: RootState) => state.scroll.data);
   return (
-    <section className="z-50 fixed right-40 top-40 flex h-fit w-fit">
+    <section
+      style={!scroll.state ? { top: `${scroll.y + 158}px` } : {}}
+      className={`${
+        scroll.state ? "fixed top-40" : "absolute"
+      } right-40 z-50 flex h-fit w-fit`}
+    >
       <div className="absolute bottom-[-15px] right-[-20px] h-full w-full rounded-[85px] border border-blue bg-white"></div>
       <div className="relative z-2 flex w-[450px] flex-col items-center justify-center rounded-[85px] bg-blue px-[49px] py-[47px]">
         <div className="flex flex-col gap-[5px]">

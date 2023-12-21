@@ -6,6 +6,7 @@ export type Tarticle = {
   title: string;
   slug: string;
   excerpt: string;
+  content: string;
   media: {
     medium_large: string;
   };

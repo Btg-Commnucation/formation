@@ -4,6 +4,7 @@ import { Skeleton } from "./ui/skeleton";
 import { RootState } from "@/app/store";
 import { Button } from "./ui/button";
 import { useState } from "react";
+import he from "he";
 
 const Formation = () => {
   const [currentCategory, setCurrentCategory] = useState<string>("");
@@ -54,7 +55,7 @@ const Formation = () => {
                   key={category.id}
                   onClick={() => setCurrentCategory(category.name)}
                 >
-                  {category.name}
+                  {he.decode(category.name)}
                 </Button>
               ))}
             </>

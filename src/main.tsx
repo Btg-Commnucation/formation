@@ -10,7 +10,7 @@ import "@fontsource/cabin/700-italic.css";
 import { store } from "@/app/store.ts";
 import { Provider } from "react-redux";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Post from "./layouts/post.tsx";
+import Post from "./layouts/Post";
 
 const router = createBrowserRouter([
   {

@@ -14,3 +14,29 @@ body {
   flex-direction: column;
   gap: 11px;
 }
+
+#content h3 {
+  color: #4a51e0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+#content h3:not(:first-of-type) {
+  margin-top: 2em;
+}
+
+#content ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+  list-style: none;
+}
+
+#content li {
+  display: flex;
+  gap: 0.3em;
+}
+
+#content li::before {
+  content: "-";
+}

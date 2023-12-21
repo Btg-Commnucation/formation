@@ -1,4 +1,7 @@
-import Loading from "./Loading";
+import { RootState } from "@/app/store";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -6,49 +9,64 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "./ui/card";
-import { Badge } from "./ui/badge";
-import clock from "@/assets/clock.png";
-import { Button } from "./ui/button";
-import { Avatar, AvatarImage } from "./ui/avatar";
-import pana from "@/assets/profil-anais.png";
-import arthur from "@/assets/profile-arthur.png";
-import { AvatarFallback } from "@radix-ui/react-avatar";
-import { RootState } from "@/app/store";
-import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+} from "@/components/ui/card";
+import { Tarticle } from "@/features/posts/formationSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import he from "he";
+import clock from "@/assets/clock.png";
+import pana from "@/assets/profil-anais.png";
+import arthur from "@/assets/profile-arthur.png";
+import { setScroll, setScrollY } from "@/features/loading/scrollSlice";
+import { useEffect, useRef } from "react";
 
-const FormationContainer = ({
-  currentCategory,
-}: {
-  currentCategory: string;
-}) => {
-  const loading = useSelector((state: RootState) => state.loading.data);
+const SameTheme = ({ currentFormation }: { currentFormation: Tarticle[] }) => {
+  const section = useRef<HTMLElement | null>(null);
+  const dispatch = useDispatch();
   const formation = useSelector((state: RootState) => state.formation.data);
-  const [data, setData] = useState(formation);
+  const data = formation.filter(
+    (formation) =>
+      formation.category_names[0] === currentFormation[0].category_names[0] &&
+      formation.id !== currentFormation[0].id,
+  );
+
+  const options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.1,
+  };
+
+  const callBackFunction = (entries: IntersectionObserverEntry[]) => {
+    const [entry] = entries;
+    dispatch(setScroll(!entry.isIntersecting));
+    dispatch(setScrollY(window.scrollY));
+  };
 
   useEffect(() => {
-    if (currentCategory === "") {
-      setData(formation);
-    } else {
-      setData(
-        formation.filter((formation) =>
-          formation.category_names.includes(currentCategory),
-        ),
-      );
-    }
-  }, [currentCategory, formation]);
+    const observer = new IntersectionObserver(callBackFunction, options);
+    if (section.current) observer.observe(section.current);
+
+    return () => {
+      if (section.current) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        observer.unobserve(section.current);
+      }
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [section, options]);
 
   return (
-    <div className="mx-auto mt-[42px] grid w-full max-w-[1429px] grid-cols-3 gap-x-[59px] gap-y-[99px]">
-      {loading ? (
-        <Loading />
-      ) : (
-        <>
-          {data.map((formation) => (
-            <Card key={formation.id} className="rounded-32 border border-blue">
+    <section
+      ref={section}
+      className="mx-auto mb-[68px] mt-[88px] flex max-w-[1424px] flex-col items-center justify-center gap-[51px]"
+    >
+      <h2 className="rounded-32 bg-yellow p-[20px] text-center text-lg font-normal uppercase italic">
+        Sur le même thème
+      </h2>
+      <ul className="grid grid-cols-3 gap-[59px]">
+        {data.slice(0, 3).map((formation) => (
+          <li key={formation.id}>
+            <Card className="rounded-32 border border-blue">
               <CardHeader className="relative p-0">
                 <img
                   src={formation.media.medium_large}
@@ -91,11 +109,11 @@ const FormationContainer = ({
                 </Button>
               </CardFooter>
             </Card>
-          ))}
-        </>
-      )}
-    </div>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 };
 
-export default FormationContainer;
+export default SameTheme;
