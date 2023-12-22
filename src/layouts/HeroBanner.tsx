@@ -1,12 +1,15 @@
 import { RootState } from "@/app/store";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { setModal } from "@/features/modal/modalSlice";
 import { Tarticle } from "@/features/posts/formationSlice";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const HeroBanner = ({ formation }: { formation: Tarticle[] }) => {
   const data = formation[0];
   const scroll = useSelector((state: RootState) => state.scroll.data);
+  const dispatch = useDispatch();
+
   return (
     <section
       style={!scroll.state ? { top: `${scroll.y + 158}px` } : {}}
@@ -32,7 +35,10 @@ const HeroBanner = ({ formation }: { formation: Tarticle[] }) => {
           className="mt-[21px] text-center text-sm font-normal text-white"
           dangerouslySetInnerHTML={{ __html: data.acf.modalites }}
         ></div>
-        <Button className="mx-auto mt-[42px] h-fit w-fit rounded-32 border border-black bg-black px-[20px] py-[15px] text-[26px] font-bold text-white duration-300 ease-in-out hover:border-white hover:bg-transparent">
+        <Button
+          onClick={() => dispatch(setModal(true))}
+          className="mx-auto mt-[42px] h-fit w-fit rounded-32 border border-black bg-black px-[20px] py-[15px] text-[26px] font-bold text-white duration-300 ease-in-out hover:border-white hover:bg-transparent"
+        >
           Demande de devis
         </Button>
       </div>
