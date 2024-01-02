@@ -30,7 +30,7 @@ const Header = () => {
         "https://admin.btg-communication-dev.com/wp-json/better-rest-endpoints/v1/posts",
       );
       dispatch(setFormation(response.data));
-      getCategories();
+      await getCategories();
     } catch (error) {
       console.log(error);
     }
@@ -43,7 +43,7 @@ const Header = () => {
   return (
     <>
       <header>
-        <div className="relative mx-[24px] mt-[24px] bg-primary">
+        <div className="relative desktop:mx-[24px] desktop:mt-[24px] bg-primary">
           <a
             href="https://btg-communication.fr"
             target="_blank"
@@ -56,11 +56,11 @@ const Header = () => {
             <img src="/logo-btg-formation.png" alt="Logo BTG Communication" />
           </a>
           <img
-            className="mx-auto max-w-[1064px]"
+            className="mx-auto max-w-[1064px] object-fit object-center-bottom"
             src={background}
             alt="Un livre ouvert posé sur une planète"
           />
-          <h1 className="absolute left-0 right-0 top-2 mx-auto flex w-fit flex-col text-center text-4xl font-bold text-white">
+          <h1 className="absolute left-0 right-0 top-2 mx-auto flex w-fit flex-col text-center tablet:text-4xl text-2xl font-bold text-white">
             Formez vous aux{" "}
             <span className="after:z-1 relative px-5 text-white before:absolute before:inset-0 before:z-2 before:mx-auto before:h-full before:w-full before:rotate-178 before:bg-red-400 before:content-[''] after:absolute after:left-5 after:top-2 after:h-full after:w-full after:rotate-178 after:bg-red-700 after:content-['']">
               <span className="relative z-10">Bonnes pratiques</span>

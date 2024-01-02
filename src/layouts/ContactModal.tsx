@@ -13,7 +13,6 @@ const schema = z.object({
   email: z.string({ required_error: "Votre adresse mail est requise" }).email(),
   society: z.string({ required_error: "Votre société est requise" }),
   participants: z.number(),
-  addresse: z.string({ required_error: "Votre adresse est requise" }),
   zipCode: z.string({ required_error: "Votre code postal est requis" }),
   presence: z.string({
     required_error: "Vous devez choisir un mode préférentiel",
@@ -24,22 +23,22 @@ const schema = z.object({
     .refine((v) => v, { message: "Vous devez accepter les conditions" }),
 });
 
-const initialValues = {
-  username: "",
-  email: "",
-  society: "",
-  participants: 1,
-  addresse: "",
-  zipCode: "",
-  presence: "",
-  message: "",
-  consent: false,
-};
-
 const ContactModal = ({ formation }: { formation: Tarticle[] }) => {
   const data = formation[0];
   const dispatch = useDispatch();
   const modal = useSelector((state: RootState) => state.modal.data);
+
+  const initialValues = {
+    formation: data.title,
+    username: "",
+    email: "",
+    society: "",
+    participants: 1,
+    zipCode: "",
+    presence: "",
+    message: "",
+    consent: false,
+  };
 
   return (
     <>
@@ -65,6 +64,7 @@ const ContactModal = ({ formation }: { formation: Tarticle[] }) => {
               >
                 {({ errors, touched }) => (
                   <Form className="grid grid-cols-2 gap-x-[24px] gap-y-[18px]">
+                    <Field name="formation" value={data.title} className="sr-only font-regular w-full rounded-32 border bg-white px-[28px] py-[14px] text-sm text-blue placeholder:text-blue border-white" />
                     <div>
                       <Field
                         placeholder="Votre nom / Prénom*"
