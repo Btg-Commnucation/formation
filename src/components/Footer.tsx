@@ -46,7 +46,7 @@ const Footer = () => {
             </a>
           </li>
         </ul>
-        <ul className="mt-[53px] flex list-none gap-[123px]">
+        <ul className="mt-[53px] flex flex-col tablet:flex-row items-center justify-center list-none gap-[22px] tablet:gap-[123px]">
           <li>
             <a
               href="https://btg-communication.fr/savoir-faire/"

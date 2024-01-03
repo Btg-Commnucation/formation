@@ -78,8 +78,11 @@ module.exports = {
       },
     },
     screens: {
+      'xl': '1476px',
       'desktop': '1180px',
-      'tablet': '750px'
+      'tablet': '750px',
+      'mobile': '640px',
+      'mobile-md': '388px',
     }
   },
   plugins: [require("tailwindcss-animate")],
