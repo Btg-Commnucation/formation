@@ -58,12 +58,12 @@ const SameTheme = ({ currentFormation }: { currentFormation: Tarticle[] }) => {
   return (
     <section
       ref={section}
-      className="mx-auto mb-[68px] mt-[88px] flex max-w-[1424px] flex-col items-center justify-center gap-[51px]"
+      className="mx-auto mb-[68px] mt-[88px] flex max-w-[95%] flex-col items-center justify-center gap-[51px] xl:max-w-[1424px]"
     >
       <h2 className="rounded-32 bg-yellow p-[20px] text-center text-lg font-normal uppercase italic">
         Sur le même thème
       </h2>
-      <ul className="grid grid-cols-3 gap-[59px]">
+      <ul className="lg:grid-cols-3 lg:gap-[20px] grid w-[95%] grid-cols-1 gap-[15px] tablet:grid-cols-2 desktop:w-full xl:gap-[59px]">
         {data.slice(0, 3).map((formation) => (
           <li key={formation.id}>
             <Card className="rounded-32 border border-blue">
@@ -73,7 +73,7 @@ const SameTheme = ({ currentFormation }: { currentFormation: Tarticle[] }) => {
                   className="min-h-[189px] w-full rounded-t-30"
                 />
                 <div className="absolute bottom-[-15px] left-[25px] flex w-full gap-5">
-                  <Badge className="flex h-fit w-fit items-center justify-center rounded-[15px] border-0 bg-white text-sm font-normal">
+                  <Badge className="flex h-fit w-fit items-center justify-center rounded-[15px] border-0 bg-white text-[16px] font-normal tablet:text-sm">
                     <img
                       src={clock}
                       alt="Horloge"
@@ -81,10 +81,10 @@ const SameTheme = ({ currentFormation }: { currentFormation: Tarticle[] }) => {
                     />
                     <p>{he.decode(formation.acf.duree)}</p>
                   </Badge>
-                  <Badge className="h-fit w-fit rounded-[15px] border-0 bg-white text-sm font-normal text-black">
+                  <Badge className="h-fit w-fit rounded-[15px] border-0 bg-white text-[16px] font-normal  text-black tablet:text-sm">
                     {he.decode(formation.category_names[0])}
                   </Badge>
-                  <Avatar className="absolute bottom-[-30px] right-10 h-[96px] w-[96px] rounded-full bg-blue-700/20">
+                  <Avatar className="absolute bottom-[-20px] right-[50px] h-[70px] w-[70px] rounded-full bg-blue-700/20 tablet:bottom-[-30px] tablet:right-10 tablet:h-[96px] tablet:w-[96px]">
                     <AvatarImage
                       src={formation.acf.formateur === "Anaïs" ? pana : arthur}
                       alt="Photo du formateur"

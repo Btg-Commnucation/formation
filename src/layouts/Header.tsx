@@ -28,8 +28,8 @@ const Header = () => {
   }, []);
 
   return (
-    <header>
-      <div className="relative mx-[24px] mt-[24px]">
+    <header className="min-h-[278px]">
+      <div className="relative mx-[24px] mt-[24px] min-h-[278px]">
         <a
           href="https://btg-communication.fr"
           target="_blank"
@@ -47,7 +47,7 @@ const Header = () => {
           </Link>
         </Button>
         <img
-          className="w-full"
+          className="h-full min-h-[278px] w-full object-cover"
           src={background}
           alt="Un livre ouvert posé sur une planète"
         />

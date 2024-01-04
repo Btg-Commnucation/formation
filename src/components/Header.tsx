@@ -43,26 +43,28 @@ const Header = () => {
   return (
     <>
       <header>
-        <div className="relative desktop:mx-[24px] desktop:mt-[24px] bg-primary">
+        <div className="relative bg-primary desktop:mx-[24px] desktop:mt-[24px]">
           <a
             href="https://btg-communication.fr"
             target="_blank"
             rel="noreferrer noopener"
-            className="absolute left-2 top-2"
+            className="absolute left-2 top-2 z-10"
           >
             <span className="sr-only">
               Se rendre sur le site de BTG Communication
             </span>
             <img src="/logo-btg-formation.png" alt="Logo BTG Communication" />
           </a>
-          <img
-            className="mx-auto max-w-[1064px] object-fit object-center-bottom"
-            src={background}
-            alt="Un livre ouvert posé sur une planète"
-          />
-          <h1 className="absolute left-0 right-0 top-2 mx-auto flex w-fit flex-col text-center tablet:text-4xl text-[25px] font-bold text-white">
+          <div className="z-0 relative h-[708px] w-full overflow-hidden">
+            <img
+              className="lg:relative lg:w-full lg:object-fit object-center-bottom lg:max-w-[1064px] absolute bottom-0 mx-auto h-full w-full max-w-full object-cover"
+              src={background}
+              alt="Un livre ouvert posé sur une planète"
+            />
+          </div>
+          <h1 className="absolute left-0 right-0 top-20 mx-auto flex w-fit flex-col text-center text-[25px] font-bold text-white tablet:top-2 tablet:text-4xl">
             Formez vous aux{" "}
-            <span className="after:z-1 text-md tablet:text-2xl relative px-5 text-white before:absolute before:inset-0 before:z-2 before:mx-auto before:h-full before:w-full before:rotate-178 before:bg-red-400 before:content-[''] after:absolute after:left-5 after:top-2 after:h-full after:w-full after:rotate-178 after:bg-red-700 after:content-['']">
+            <span className="after:z-1 relative px-5 text-md text-white before:absolute before:inset-0 before:z-2 before:mx-auto before:h-full before:w-full before:rotate-178 before:bg-red-400 before:content-[''] after:absolute after:left-5 after:top-2 after:h-full after:w-full after:rotate-178 after:bg-red-700 after:content-[''] tablet:text-2xl">
               <span className="relative z-10">Bonnes pratiques</span>
             </span>{" "}
             de communication
@@ -71,7 +73,7 @@ const Header = () => {
       </header>
       <a
         href="#formation"
-        className="z-50 fixed bottom-5 right-5 flex flex-col items-center justify-center gap-[5px]"
+        className="fixed bottom-5 right-5 z-50 flex flex-col items-center justify-center gap-[5px]"
       >
         <img
           src={bookIcon}

@@ -8,7 +8,7 @@ const FirstPart = ({ formation }: { formation: Tarticle[] }) => {
 
   return (
     <>
-      <section className="mx-auto mt-[42px] max-w-[1424px]">
+      <section className="mx-[24px] mt-[42px] max-w-[1424px]">
         <div className="flex">
           <Badge className="flex h-fit w-fit items-center justify-center rounded-15 border-0 bg-white text-sm font-normal">
             <img src={clock} alt="Horloge" className="mr-1 max-w-[17.69px]" />
@@ -25,8 +25,8 @@ const FirstPart = ({ formation }: { formation: Tarticle[] }) => {
         </div>
       </section>
       <section className="mt-[31px] bg-gray pb-[62px] pt-[53px]">
-        <div className="mx-auto max-w-[1424px]">
-          <h2 className="after:z-1 text-45 relative h-fit w-fit max-w-[620px] px-5 py-[15px] text-center font-bold text-white before:absolute before:inset-0 before:z-2 before:mx-auto before:h-full before:w-full before:rotate-178 before:bg-red-400 before:content-[''] after:absolute after:left-5 after:top-2 after:h-full after:w-full after:rotate-178 after:bg-red-700 after:content-['']">
+        <div className="mx-[24px] max-w-[1424px]">
+          <h2 className="after:z-1 relative h-fit w-fit max-w-[620px] px-5 py-[15px] text-center text-45 font-bold text-white before:absolute before:inset-0 before:z-2 before:mx-auto before:h-full before:w-full before:rotate-178 before:bg-red-400 before:content-[''] after:absolute after:left-5 after:top-2 after:h-full after:w-full after:rotate-178 after:bg-red-700 after:content-['']">
             <span className="relative z-10 leading-snug">Présentation</span>
           </h2>
           <p className="font-regular mt-[53px] max-w-[779px] text-sm text-blue">

@@ -42,7 +42,7 @@ const FormationContainer = ({
   }, [currentCategory, formation]);
 
   return (
-    <div className="mx-auto max-w-[95%] mt-[42px] grid w-fit xl:max-w-[1429px] grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-x-[15px] gap-y-[20px] desktop:gap-x-[59px] desktop:gap-y-[99px]">
+    <div className="mx-auto mt-[42px] grid w-fit max-w-[93%] grid-cols-1 gap-x-[15px] gap-y-[20px] tablet:grid-cols-2 desktop:grid-cols-3 desktop:gap-x-[59px] desktop:gap-y-[99px] xl:max-w-[1429px]">
       {loading ? (
         <Loading />
       ) : (
@@ -54,8 +54,8 @@ const FormationContainer = ({
                   src={formation.media.medium_large}
                   className="min-h-[189px] w-full rounded-t-30"
                 />
-                <div className="absolute bottom-[-15px] left-[5px] tablet:left-[25px] flex w-full gap-2 tablet:gap-5">
-                  <Badge className="flex h-fit w-fit items-center justify-center rounded-[15px] border-0 bg-white text-[16px] tablet:text-sm font-normal">
+                <div className="absolute bottom-[-15px] left-[5px] flex w-full gap-2 tablet:left-[25px] tablet:gap-5">
+                  <Badge className="flex h-fit w-fit items-center justify-center rounded-[15px] border-0 bg-white text-[16px] font-normal tablet:text-sm">
                     <img
                       src={clock}
                       alt="Horloge"
@@ -63,10 +63,10 @@ const FormationContainer = ({
                     />
                     <p>{he.decode(formation.acf.duree)}</p>
                   </Badge>
-                  <Badge className="h-fit w-fit rounded-[15px] border-0 bg-white text-[16px] tablet:text-sm font-normal text-black">
+                  <Badge className="h-fit w-fit rounded-[15px] border-0 bg-white text-[16px] font-normal text-black tablet:text-sm">
                     {he.decode(formation.category_names[0])}
                   </Badge>
-                  <Avatar className="absolute bottom-[-20px] tablet:bottom-[-30px] right-[15px] w-[70px] h-[70px] tablet:right-10 tablet:h-[96px] tablet:w-[96px] rounded-full bg-blue-700/20">
+                  <Avatar className="absolute bottom-[-20px] right-[15px] h-[70px] w-[70px] rounded-full bg-blue-700/20 tablet:bottom-[-30px] tablet:right-10 tablet:h-[96px] tablet:w-[96px]">
                     <AvatarImage
                       src={formation.acf.formateur === "Anaïs" ? pana : arthur}
                       alt="Photo du formateur"

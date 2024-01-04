@@ -9,16 +9,21 @@ const HeroBanner = ({ formation }: { formation: Tarticle[] }) => {
   const data = formation[0];
   const scroll = useSelector((state: RootState) => state.scroll.data);
   const dispatch = useDispatch();
+  const windowWidth = window.innerWidth;
 
   return (
     <section
-      style={!scroll.state ? { top: `${scroll.y + 158}px` } : {}}
+      style={
+        !scroll.state && windowWidth >= 1383
+          ? { top: `${scroll.y + 158}px` }
+          : {}
+      }
       className={`${
-        scroll.state ? "fixed top-40" : "absolute"
-      } right-40 z-50 flex h-fit w-fit`}
+        scroll.state ? "lg:fixed lg:top-40" : "lg:absolute"
+      } lg:right-40 lg:mt-0 relative z-50 mx-auto mt-[-85px] flex h-fit w-fit`}
     >
-      <div className="absolute bottom-[-15px] right-[-20px] h-full w-full rounded-[85px] border border-blue bg-white"></div>
-      <div className="relative z-2 flex w-[450px] flex-col items-center justify-center rounded-[85px] bg-blue px-[49px] py-[47px]">
+      <div className="lg:h-full lg:w-full lg:right-[-20px] absolute bottom-[-15px] right-0 h-[95%] w-[90%] rounded-[85px] border border-blue bg-white"></div>
+      <div className="lg:w-[450px] relative z-2 mx-auto flex max-w-[95%] flex-col items-center justify-center rounded-[85px] bg-blue px-[49px] py-[47px]">
         <div className="flex flex-col gap-[5px]">
           <h2 className="text-center text-lg font-bold text-white">
             Vous souhaitez suivre cette formation ?
