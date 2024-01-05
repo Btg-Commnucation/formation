@@ -69,7 +69,7 @@ const Header = () => {
           <h1 className="absolute left-0 right-0 top-20 mx-auto flex w-fit flex-col text-center text-[25px] font-bold text-white tablet:top-8 tablet:text-4xl desktop:top-20">
             Formez vous aux{" "}
             <span className="after:z-1 relative px-5 text-md text-white before:absolute before:inset-0 before:z-2 before:mx-auto before:h-full before:w-full before:rotate-178 before:bg-red-400 before:content-[''] after:absolute after:left-5 after:top-2 after:h-full after:w-full after:rotate-178 after:bg-red-700 after:content-[''] tablet:text-2xl">
-              <span className="relative z-10">Bonnes pratiques</span>
+              <span className="rotate-2 relative z-10">Bonnes pratiques</span>
             </span>{" "}
             de communication
           </h1>
