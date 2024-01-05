@@ -61,7 +61,7 @@ const Header = () => {
           </a>
           <div className="z-0 relative h-[708px] w-full overflow-hidden">
             <img
-              className="lg:object-fit object-center-bottom absolute bottom-0 mx-auto h-full w-full max-w-full object-cover desktop:overflow-hidden lg:relative lg:w-full lg:max-w-[1064px]"
+              className="lg:object-fit object-center-bottom absolute bottom-0 mx-auto h-full w-full max-w-full object-cover desktop:overflow-visible lg:relative lg:w-full lg:max-w-[1064px]"
               src={background}
               alt="Un livre ouvert posé sur une planète"
             />
