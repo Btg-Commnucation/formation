@@ -5,7 +5,7 @@ const Avantages = () => {
     <section className="relative z-2 mt-[68px] bg-gray pb-[77px] pt-[67px] desktop:mt-[-65px] desktop:pt-[159px]">
       <div className="flex flex-col items-center justify-center">
         <h2 className="after:z-1 relative w-fit max-w-[75%] px-5 text-center text-md font-bold text-white before:absolute before:inset-0 before:z-2 before:mx-auto before:h-full before:w-full before:rotate-178 before:bg-red-400 before:content-[''] after:absolute after:left-5 after:top-2 after:h-full after:w-full after:rotate-178 after:bg-red-700 after:content-[''] tablet:max-w-[620px] tablet:text-3xl">
-          <span className="rotate-2 relative z-10 flow-root leading-snug">
+          <span className="rotate-2 relative z-10 flow-root leading-none">
             Quels avantages pour votre entreprise ?
           </span>
         </h2>

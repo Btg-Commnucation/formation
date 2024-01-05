@@ -61,15 +61,17 @@ const Header = () => {
           </a>
           <div className="z-0 relative h-[708px] w-full overflow-hidden">
             <img
-              className="lg:object-fit object-center-bottom absolute bottom-0 mx-auto h-full w-full max-w-full object-cover lg:relative lg:w-full lg:max-w-[1064px]"
+              className="lg:object-fit object-center-bottom absolute bottom-0 mx-auto h-full w-full max-w-full object-cover desktop:overflow-hidden lg:relative lg:w-full lg:max-w-[1064px]"
               src={background}
               alt="Un livre ouvert posé sur une planète"
             />
           </div>
           <h1 className="absolute left-0 right-0 top-20 mx-auto flex w-fit flex-col text-center text-[25px] font-bold text-white tablet:top-8 tablet:text-4xl desktop:top-20">
             Formez vous aux{" "}
-            <span className="after:z-1 relative px-5 text-md text-white before:absolute before:inset-0 before:z-2 before:mx-auto before:h-full before:w-full before:rotate-178 before:bg-red-400 before:content-[''] after:absolute after:left-5 after:top-2 after:h-full after:w-full after:rotate-178 after:bg-red-700 after:content-[''] tablet:text-2xl">
-              <span className="rotate-2 relative z-10">Bonnes pratiques</span>
+            <span className="after:z-1 relative px-5 text-md text-white before:absolute before:inset-0 before:z-2 before:mx-auto before:h-full before:w-full before:rotate-178 before:bg-red-400 before:content-[''] after:absolute after:left-5 after:top-2 after:h-full after:w-full after:rotate-178 after:bg-red-700 after:content-[''] tablet:text-2xl desktop:text-5xl">
+              <span className="rotate-2 relative z-10 flow-root">
+                Bonnes pratiques
+              </span>
             </span>{" "}
             de communication
           </h1>
