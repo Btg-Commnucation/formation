@@ -14,14 +14,16 @@ const Formation = () => {
   return (
     <article id="formation" className="mb-[156px] mt-[43px]">
       <div className="flex flex-col items-center justify-center">
-        <h2 className="after:z-1 relative max-w-[620px] px-5 text-center text-md tablet:text-3xl font-bold text-white before:absolute before:inset-0 before:z-2 before:mx-auto before:h-full before:w-full before:rotate-178 before:bg-blue before:content-[''] after:absolute after:left-5 after:top-2 after:h-full after:w-full after:rotate-178 after:bg-blue-700 after:content-['']">
-          <span className="relative z-10">Nos formations</span>
+        <h2 className="after:z-1 relative max-w-[620px] px-5 text-center text-md font-bold text-white before:absolute before:inset-0 before:z-2 before:mx-auto before:h-full before:w-full before:rotate-178 before:bg-blue before:content-[''] after:absolute after:left-5 after:top-2 after:h-full after:w-full after:rotate-178 after:bg-blue-700 after:content-[''] tablet:text-3xl">
+          <span className="rotate-2 relative z-10 flow-root">
+            Nos formations
+          </span>
         </h2>
         <h3 className="mt-[33px] text-center text-xl tablet:text-2xl">
           À partir de <strong>250€ ht</strong>
         </h3>
         <div
-          className="mt-[48px] flex flex-col desktop:flex-row items-center gap-[19px]
+          className="mt-[48px] flex flex-col items-center gap-[5px] desktop:flex-row
         desktop:gap-10"
         >
           {loading ? (
@@ -40,7 +42,7 @@ const Formation = () => {
               <Button
                 className={`${
                   currentCategory === "" ? "border-blue" : "border-transparent"
-                } h-fit w-fit rounded-43 border  px-[24px] py-[14px] text-[20px] tablet:text-md font-normal leading-snug text-blue hover:bg-blue hover:text-white`}
+                } h-fit w-fit rounded-43 border  px-[24px] py-[14px] text-[20px] font-normal leading-snug text-blue hover:bg-blue hover:text-white tablet:text-md`}
                 onClick={() => setCurrentCategory("")}
               >
                 Toutes nos formations

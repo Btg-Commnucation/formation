@@ -60,10 +60,10 @@ const SameTheme = ({ currentFormation }: { currentFormation: Tarticle[] }) => {
       ref={section}
       className="mx-auto mb-[68px] mt-[88px] flex max-w-[95%] flex-col items-center justify-center gap-[51px] xl:max-w-[1424px]"
     >
-      <h2 className="rounded-32 bg-yellow p-[20px] text-center text-lg font-normal uppercase italic">
+      <h2 className="rounded-32 bg-yellow px-[20px] py-[15px] text-center text-[27px] font-normal uppercase italic tablet:text-lg desktop:p-[20px]">
         Sur le même thème
       </h2>
-      <ul className="lg:grid-cols-3 lg:gap-[20px] grid w-[95%] grid-cols-1 gap-[15px] tablet:grid-cols-2 desktop:w-full xl:gap-[59px]">
+      <ul className="grid w-[95%] grid-cols-1 gap-[15px] tablet:grid-cols-2 desktop:w-full lg:grid-cols-3 lg:gap-[20px] xl:gap-[59px]">
         {data.slice(0, 3).map((formation) => (
           <li key={formation.id}>
             <Card className="rounded-32 border border-blue">

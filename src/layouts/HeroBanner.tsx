@@ -20,18 +20,18 @@ const HeroBanner = ({ formation }: { formation: Tarticle[] }) => {
       }
       className={`${
         scroll.state ? "lg:fixed lg:top-40" : "lg:absolute"
-      } lg:right-40 lg:mt-0 relative z-50 mx-auto mt-[-85px] flex h-fit w-fit`}
+      } relative z-50 mx-auto mt-[-85px] flex h-fit w-fit lg:right-80 lg:mt-0`}
     >
-      <div className="lg:h-full lg:w-full lg:right-[-20px] absolute bottom-[-15px] right-0 h-[95%] w-[90%] rounded-[85px] border border-blue bg-white"></div>
-      <div className="lg:w-[450px] relative z-2 mx-auto flex max-w-[95%] flex-col items-center justify-center rounded-[85px] bg-blue px-[49px] py-[47px]">
+      <div className="absolute bottom-[-10px] right-[5px] h-[95%] w-[94%] rounded-[10px] border border-blue bg-white mobile:bottom-[-15px] mobile:right-[10px] tablet:rounded-[85px] lg:right-[-20px] lg:h-full lg:w-full"></div>
+      <div className="relative z-2 mx-auto flex max-w-[94%] flex-col items-center justify-center rounded-[10px] bg-blue px-[49px] py-[47px] tablet:rounded-[85px] lg:w-[450px] lg:max-w-full">
         <div className="flex flex-col gap-[5px]">
-          <h2 className="text-center text-lg font-bold text-white">
+          <h2 className="text-center text-[28px] font-bold text-white tablet:text-lg">
             Vous souhaitez suivre cette formation ?
           </h2>
         </div>
         <Separator className="mx-auto mt-[9px] max-w-[320px] bg-white" />
         <div
-          className="mx-auto my-[14px] text-center text-md text-white"
+          className="mx-auto my-[14px] text-center text-[27px] text-white tablet:text-md"
           dangerouslySetInnerHTML={{ __html: data.acf.zone_de_prix }}
         ></div>
         <Separator className="mx-auto mt-[9px] max-w-[320px] bg-white" />

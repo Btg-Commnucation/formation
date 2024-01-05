@@ -29,19 +29,19 @@ const Header = () => {
 
   return (
     <header className="min-h-[278px]">
-      <div className="relative mx-[24px] mt-[24px] min-h-[278px]">
+      <div className="relative mx-auto min-h-[278px] mobile:mx-[24px] mobile:mt-[24px]">
         <a
           href="https://btg-communication.fr"
           target="_blank"
           rel="noreferrer noopener"
-          className="absolute left-2 top-2"
+          className="absolute left-10 top-2"
         >
           <span className="sr-only">
             Se rendre sur le site de BTG Communication
           </span>
           <img src="/logo-btg-formation.png" alt="Logo BTG Communication" />
         </a>
-        <Button className="absolute left-20 top-5 h-fit w-fit rounded-[22px] border border-white bg-white p-[10px] duration-300 ease-in-out hover:bg-transparent hover:text-white">
+        <Button className="absolute left-[115px] top-5 h-fit w-fit rounded-[22px] border border-white bg-white p-[10px] duration-300 ease-in-out hover:bg-transparent hover:text-white">
           <Link to="/" className="text-sm font-normal">
             Retour aux formations
           </Link>

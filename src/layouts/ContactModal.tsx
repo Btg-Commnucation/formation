@@ -15,7 +15,18 @@ const schema = z.object({
   username: z.string({ required_error: "Votre nom et prénom sont requis" }),
   email: z.string({ required_error: "Votre adresse mail est requise" }).email(),
   society: z.string({ required_error: "Votre société est requise" }),
-  participants: z.number(),
+  participants: z
+    .number({
+      required_error: "Le nombres de participants est requis",
+      invalid_type_error: "Les participants doit être un chiffre ou nombres",
+    })
+    .positive({ message: "Le nombres de participants doit être supérieur à 0" })
+    .gte(1, { message: "Le nombres de participants doit être supérieur à 0" })
+    .int({
+      message:
+        "Le nombres de participants doit être un chiffre ou nombres rond",
+    }),
+  address: z.string({ required_error: "Votre adresse est requise" }),
   zipCode: z.string({ required_error: "Votre code postal est requis" }),
   presence: z.string({
     required_error: "Vous devez choisir un mode préférentiel",
@@ -38,6 +49,7 @@ const ContactModal = ({ formation }: { formation: Tarticle[] }) => {
     email: "",
     society: "",
     participants: 1,
+    address: "",
     zipCode: "",
     presence: "",
     message: "",
@@ -51,6 +63,7 @@ const ContactModal = ({ formation }: { formation: Tarticle[] }) => {
     payload.set("email", values.email);
     payload.set("society", values.society);
     payload.set("participants", values.participants.toString());
+    payload.set("address", values.address);
     payload.set("zipCode", values.zipCode);
     payload.set("presence", values.presence);
     payload.set("message", values.message);
@@ -71,25 +84,33 @@ const ContactModal = ({ formation }: { formation: Tarticle[] }) => {
     <>
       {modal && (
         <section className="fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center overflow-x-hidden overflow-y-scroll bg-white/[86%]">
-          <div className="md:mt-0 relative mx-auto mt-[100px] h-fit w-fit max-w-[90%]">
-            <div className="absolute bottom-[-15px] right-[-20px] h-full w-full rounded-[85px] border border-blue bg-white"></div>
-            <div className="md:px-[85px] relative w-fit rounded-[85px] bg-blue px-[15px] py-[47px] text-white">
+          <div
+            className={`${
+              status === 200 ? "mt-0" : "mt-[300px]"
+            } relative mx-auto h-fit w-fit max-w-[90%] mobile:mt-0 desktop:w-[1110px]`}
+          >
+            <div className="absolute bottom-[-5px] right-[-5px] h-full w-full rounded-[10px] border border-blue bg-white tablet:bottom-[-15px] tablet:right-[-20px] tablet:rounded-[85px]"></div>
+            <div className="relative w-fit rounded-[10px] bg-blue px-[15px] py-[47px] text-white tablet:rounded-[85px] md:px-[85px] desktop:w-full">
               <X
-                className="absolute right-10 top-5 cursor-pointer"
+                className="absolute right-5 top-2 cursor-pointer tablet:right-20 tablet:top-5"
                 onClick={() => dispatch(setModal(false))}
               />
-              <h2 className="md:text-xl md:font-normal mx-auto text-center text-md font-bold leading-none">
+              <h2
+                className={`${
+                  status === 200 ? "mt-[46px]" : ""
+                } mx-auto text-center text-md font-bold leading-none md:text-xl md:font-normal`}
+              >
                 {status === 200
                   ? "Merci pour votre demande concernant la formation :"
                   : " Information du / des participants à la formation :"}
               </h2>
-              <strong className="md:text-md mx-auto mb-[49px] flow-root w-fit text-center text-[25px] font-normal">
+              <strong className="mx-auto mb-[49px] flow-root w-fit text-center text-[25px] font-normal md:text-md">
                 {data.title}
               </strong>
               {status === 200 ? (
                 <>
-                  <Separator className="md:max-w-[320px] mx-auto mb-[25px] mt-[46px] max-w-[75%] bg-white" />
-                  <h3 className="mx-auto max-w-[544px] text-center text-xl font-bold text-white">
+                  <Separator className="mx-auto mb-[25px] mt-[46px] max-w-[75%] bg-white md:max-w-[320px]" />
+                  <h3 className="mx-auto mb-[46px] max-w-[544px] text-center text-[28px] font-bold leading-snug text-white tablet:text-xl">
                     Notre équipe reviendra vers vous dans les meilleurs délais
                   </h3>
                 </>
@@ -100,11 +121,11 @@ const ContactModal = ({ formation }: { formation: Tarticle[] }) => {
                   onSubmit={(values) => handleSubmit(values)}
                 >
                   {({ errors, touched }) => (
-                    <Form className="md:grid-cols-2 md:gap-y-[18px] grid grid-cols-1 gap-[10px] gap-x-[24px]">
+                    <Form className="grid grid-cols-1 gap-[10px] gap-x-[24px] md:grid-cols-2 md:gap-y-[18px]">
                       <Field
                         name="formation"
                         value={data.title}
-                        className="md:text-sm sr-only w-full rounded-32 border border-white bg-white px-[28px] py-[14px] text-[16px] font-normal text-blue placeholder:text-blue"
+                        className="sr-only w-full rounded-32 border border-white bg-white px-[28px] py-[14px] text-[16px] font-normal text-blue placeholder:text-blue md:text-sm"
                       />
                       <div>
                         <Field
@@ -113,7 +134,7 @@ const ContactModal = ({ formation }: { formation: Tarticle[] }) => {
                             errors.username && touched.username
                               ? "border-red"
                               : "border-white"
-                          } md:text-sm w-full rounded-32 border bg-white px-[28px] py-[14px] text-[16px] font-normal text-blue placeholder:text-blue`}
+                          } w-full rounded-32 border bg-white px-[28px] py-[14px] text-[16px] font-normal text-blue placeholder:text-blue md:text-sm`}
                           name="username"
                         />
                         {errors.username && touched.username && (
@@ -129,7 +150,7 @@ const ContactModal = ({ formation }: { formation: Tarticle[] }) => {
                             errors.email && touched.email
                               ? "border-red"
                               : "border-white"
-                          } font-regular md:text-sm w-full rounded-32 bg-white px-[28px] py-[14px] text-[16px] text-blue placeholder:text-blue`}
+                          } font-regular w-full rounded-32 bg-white px-[28px] py-[14px] text-[16px] text-blue placeholder:text-blue md:text-sm`}
                           type="email"
                           name="email"
                         />
@@ -146,7 +167,7 @@ const ContactModal = ({ formation }: { formation: Tarticle[] }) => {
                             errors.society && touched.society
                               ? "border-red"
                               : "border-white"
-                          } font-regular md:text-sm w-full rounded-32 bg-white px-[28px] py-[14px] text-[16px] text-blue placeholder:text-blue`}
+                          } font-regular w-full rounded-32 bg-white px-[28px] py-[14px] text-[16px] text-blue placeholder:text-blue md:text-sm`}
                           name="society"
                         />
                         {errors.society && touched.society && (
@@ -155,7 +176,7 @@ const ContactModal = ({ formation }: { formation: Tarticle[] }) => {
                           </p>
                         )}
                       </div>
-                      <div className="md:justify-center flex items-center justify-between gap-[63px]">
+                      <div className="flex items-center justify-between gap-[63px] md:justify-start">
                         <label htmlFor="Participants">
                           Nombre de participant(s)
                         </label>
@@ -164,7 +185,7 @@ const ContactModal = ({ formation }: { formation: Tarticle[] }) => {
                             errors.participants && touched.participants
                               ? "border-red"
                               : "border-white"
-                          } font-regular md:text-sm w-full max-w-[90px] rounded-32 bg-white px-[28px] py-[14px] text-[16px] text-blue placeholder:text-blue`}
+                          } font-regular w-full max-w-[90px] rounded-32 bg-white px-[28px] py-[14px] text-[16px] text-blue placeholder:text-blue md:text-sm`}
                           type="number"
                           name="participants"
                           min="1"
@@ -178,11 +199,27 @@ const ContactModal = ({ formation }: { formation: Tarticle[] }) => {
                       <div>
                         <Field
                           className={`${
+                            errors.address && touched.address
+                              ? "border-red"
+                              : "border-white"
+                          } font-regular w-full rounded-32 bg-white px-[28px] py-[14px] text-[16px] text-blue placeholder:text-blue md:text-sm`}
+                          placeholder="Adresse*"
+                          name="address"
+                        />
+                        {errors.address && touched.address && (
+                          <p className="ml-[20px] mt-[5px] text-red-700">
+                            {errors.address}
+                          </p>
+                        )}
+                      </div>
+                      <div>
+                        <Field
+                          className={`${
                             errors.zipCode && touched.zipCode
                               ? "border-red"
                               : "border-white"
-                          } font-regular md:text-sm w-full rounded-32 bg-white px-[28px] py-[14px] text-[16px] text-blue placeholder:text-blue`}
-                          placeholder="Adresse*"
+                          } font-regular w-full rounded-32 bg-white px-[28px] py-[14px] text-[16px] text-blue placeholder:text-blue md:text-sm`}
+                          placeholder="Code postal*"
                           name="zipCode"
                         />
                         {errors.zipCode && touched.zipCode && (
@@ -191,21 +228,21 @@ const ContactModal = ({ formation }: { formation: Tarticle[] }) => {
                           </p>
                         )}
                       </div>
-                      <div className="md:col-span-2 md:grid-cols-[281px_1fr] md:justify-items-center md:w-fit mx-auto grid w-full items-center gap-[12px] desktop:gap-[50px]">
-                        <p className="md:text-sm flow-root text-[16px] font-normal">
+                      <div className="mx-auto grid w-full items-center gap-[12px] md:col-span-2 md:w-fit md:grid-cols-[281px_1fr] md:justify-items-center desktop:gap-[50px]">
+                        <p className="flow-root text-[16px] font-normal md:text-sm">
                           Mode de formation préférentiel* :{" "}
                         </p>
-                        <div className="md:flex md:gap-0 md:justify-center grid grid-cols-2 items-center justify-items-start gap-x-[16px] gap-y-[25px]">
+                        <div className="grid grid-cols-2 items-center justify-items-start gap-x-[16px] gap-y-[25px] md:flex md:justify-center md:gap-0">
                           <label
                             htmlFor="presentiel"
-                            className="md:text-sm mr-[47px] flex items-center justify-center gap-[10px] text-[16px] font-normal"
+                            className="mr-[47px] flex items-center justify-center gap-[10px] text-[16px] font-normal md:text-sm"
                           >
                             <Field
                               className={`${
                                 errors.presence && touched.presence
                                   ? "border-red"
                                   : "border-white"
-                              } font-regular md:text-sm rounded-32 bg-white px-[28px] py-[14px] text-[16px] text-blue placeholder:text-blue`}
+                              } font-regular rounded-32 bg-white px-[28px] py-[14px] text-[16px] text-blue placeholder:text-blue md:text-sm`}
                               type="radio"
                               name="presence"
                               id="presentiel"
@@ -215,14 +252,14 @@ const ContactModal = ({ formation }: { formation: Tarticle[] }) => {
                           </label>
                           <label
                             htmlFor="distanciel"
-                            className="md:text-sm mr-[47px] flex items-center justify-center gap-[10px] text-[16px] font-normal"
+                            className="mr-[47px] flex items-center justify-center gap-[10px] text-[16px] font-normal md:text-sm"
                           >
                             <Field
                               className={`${
                                 errors.presence && touched.presence
                                   ? "border-red"
                                   : "border-white"
-                              } font-regular md:text-sm rounded-32 bg-white px-[28px] py-[14px] text-[16px] text-blue placeholder:text-blue`}
+                              } font-regular rounded-32 bg-white px-[28px] py-[14px] text-[16px] text-blue placeholder:text-blue md:text-sm`}
                               type="radio"
                               name="presence"
                               id="distanciel"
@@ -232,14 +269,14 @@ const ContactModal = ({ formation }: { formation: Tarticle[] }) => {
                           </label>
                           <label
                             htmlFor="sansPreference"
-                            className="md:text-sm flex items-center justify-center gap-[10px] text-[16px] font-normal"
+                            className="flex items-center justify-center gap-[10px] text-[16px] font-normal md:text-sm"
                           >
                             <Field
                               className={`${
                                 errors.presence && touched.presence
                                   ? "border-red"
                                   : "border-white"
-                              } font-regular md:text-sm rounded-32 bg-white px-[28px] py-[14px] text-[16px] text-blue placeholder:text-blue`}
+                              } font-regular rounded-32 bg-white px-[28px] py-[14px] text-[16px] text-blue placeholder:text-blue md:text-sm`}
                               type="radio"
                               name="presence"
                               id="sansPreference"
@@ -260,7 +297,7 @@ const ContactModal = ({ formation }: { formation: Tarticle[] }) => {
                             errors.message && touched.message
                               ? "border-red"
                               : "border-white"
-                          } font-regular md:text-sm md:min-h-[169px] min-h-[70px] w-full rounded-32 bg-white px-[28px] py-[14px] text-[16px] text-blue placeholder:text-blue`}
+                          } font-regular min-h-[70px] w-full rounded-32 bg-white px-[28px] py-[14px] text-[16px] text-blue placeholder:text-blue md:min-h-[169px] md:text-sm`}
                           as="textarea"
                           name="message"
                           placeholder="Informations complémentaires (secteur d'activité, date souhaitée, etc.)"
@@ -271,13 +308,13 @@ const ContactModal = ({ formation }: { formation: Tarticle[] }) => {
                           </p>
                         )}
                       </div>
-                      <div className="md:col-span-2 flex items-center gap-[10px]">
+                      <div className="flex items-center gap-[10px] md:col-span-2">
                         <Field
                           className={`${
                             errors.consent && touched.consent
                               ? "border-red"
                               : "border-white"
-                          } font-regular md:text-sm rounded-32 bg-white px-[28px] py-[14px] text-[16px] text-blue placeholder:text-blue`}
+                          } font-regular rounded-32 bg-white px-[28px] py-[14px] text-[16px] text-blue placeholder:text-blue md:text-sm`}
                           type="checkbox"
                           name="consent"
                           id="consent"
@@ -299,7 +336,7 @@ const ContactModal = ({ formation }: { formation: Tarticle[] }) => {
                       <input
                         type="submit"
                         value="Envoyer ma demande"
-                        className="md:col-span-2 md:justify-self-end h-fit w-fit cursor-pointer justify-self-center rounded-32 border border-yellow bg-yellow px-[25px] py-[15px] text-[26px] font-bold leading-snug text-black duration-300 ease-in-out hover:bg-transparent hover:text-yellow"
+                        className="h-fit w-fit cursor-pointer justify-self-center rounded-32 border border-yellow bg-yellow px-[25px] py-[15px] text-[26px] font-bold leading-snug text-black duration-300 ease-in-out hover:bg-transparent hover:text-yellow md:col-span-2 md:justify-self-end"
                       />
                     </Form>
                   )}

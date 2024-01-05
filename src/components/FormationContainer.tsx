@@ -81,12 +81,12 @@ const FormationContainer = ({
                 <CardTitle className="flex flex-col gap-2 text-xl leading-none text-blue">
                   {he.decode(formation.title)}
                 </CardTitle>
-                <CardDescription className="mt-[14px] flex h-fit w-full flex-col gap-2 text-sm font-normal">
+                <CardDescription className="mt-[14px] flex h-fit w-full flex-col gap-2 text-sm font-normal leading-relaxed">
                   {he.decode(formation.excerpt)}
                 </CardDescription>
               </CardContent>
               <CardFooter className="flex justify-end">
-                <Button className="h-fit w-fit rounded-32 border border-black bg-black px-[20px] py-[15px] text-sm font-normal text-white duration-300 ease-in-out hover:bg-white hover:text-black">
+                <Button className="h-fit w-fit rounded-32 border border-black bg-black px-[20px] py-[10px] text-sm font-normal text-white duration-300 ease-in-out hover:bg-white hover:text-black">
                   <Link to={`/${formation.slug}`}>Voir la formation</Link>
                 </Button>
               </CardFooter>

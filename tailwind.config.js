@@ -60,6 +60,7 @@ module.exports = {
     },
     rotate: {
       178: "178deg",
+      2: "-2deg",
     },
     extend: {
       keyframes: {
