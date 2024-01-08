@@ -20,10 +20,10 @@ const HeroBanner = ({ formation }: { formation: Tarticle[] }) => {
       }
       className={`${
         scroll.state ? "lg:fixed lg:top-40" : "lg:absolute"
-      } relative z-50 mx-auto mt-[-85px] flex h-fit w-fit lg:right-80 lg:mt-0`}
+      } relative z-50 mx-auto mt-[-85px] flex h-fit w-full desktop:w-fit lg:right-80 lg:mt-0`}
     >
       <div className="absolute bottom-[-10px] right-[5px] h-[95%] w-[94%] rounded-[10px] border border-blue bg-white mobile:bottom-[-15px] mobile:right-[10px] tablet:rounded-[85px] lg:right-[-20px] lg:h-full lg:w-full"></div>
-      <div className="relative z-2 mx-auto flex max-w-[94%] flex-col items-center justify-center rounded-[10px] bg-blue px-[49px] py-[47px] tablet:rounded-[85px] lg:w-[450px] lg:max-w-full">
+      <div className="relative z-2 mx-auto flex w-full max-w-[94%] flex-col items-center justify-center rounded-[10px] bg-blue px-[49px] py-[27px] tablet:rounded-[85px] tablet:py-[47px] lg:w-[450px] lg:max-w-full">
         <div className="flex flex-col gap-[5px]">
           <h2 className="text-center text-[28px] font-bold text-white tablet:text-lg">
             Vous souhaitez suivre cette formation ?
@@ -31,18 +31,21 @@ const HeroBanner = ({ formation }: { formation: Tarticle[] }) => {
         </div>
         <Separator className="mx-auto mt-[9px] max-w-[320px] bg-white" />
         <div
-          className="mx-auto my-[14px] text-center text-[27px] text-white tablet:text-md"
+          className="mx-auto my-[5px] text-center text-[27px] text-white tablet:my-[14px] tablet:text-md"
           dangerouslySetInnerHTML={{ __html: data.acf.zone_de_prix }}
         ></div>
-        <Separator className="mx-auto mt-[9px] max-w-[320px] bg-white" />
+        <Separator className="mx-auto max-w-[320px] bg-white tablet:mt-[9px]" />
         <div
           id="list"
           className="mt-[21px] text-center text-sm font-normal text-white"
           dangerouslySetInnerHTML={{ __html: data.acf.modalites }}
         ></div>
         <Button
-          onClick={() => dispatch(setModal(true))}
-          className="mx-auto mt-[42px] h-fit w-fit rounded-32 border border-black bg-black px-[20px] py-[15px] text-[26px] font-bold text-white duration-300 ease-in-out hover:border-white hover:bg-transparent"
+          onClick={() => {
+            dispatch(setModal(true));
+            document.body.style.overflow = "hidden";
+          }}
+          className="mx-auto mt-[20px] h-fit w-fit rounded-32 border border-black bg-black px-[20px] py-[15px] text-[26px] font-bold text-white duration-300 ease-in-out hover:border-white hover:bg-transparent tablet:mt-[42px]"
         >
           Demande de devis
         </Button>

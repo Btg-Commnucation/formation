@@ -5,14 +5,14 @@ import linkedin from "@/assets/linkedin.svg";
 
 const Footer = () => {
   return (
-    <footer className="bg-blue pt-[58px] pb-[93px]">
+    <footer className="bg-blue pb-[93px] pt-[58px]">
       <div className="flex flex-col items-center justify-center">
         <img
           src={logo}
           alt="Logo de BTG Communication en blanc"
           className="mb-[22px]"
         />
-        <ul className="flex gap-4 list-none">
+        <ul className="flex list-none gap-4">
           <li>
             <a
               href="https://www.linkedin.com/company/btg-communication/"
@@ -46,7 +46,7 @@ const Footer = () => {
             </a>
           </li>
         </ul>
-        <ul className="mt-[53px] flex flex-col tablet:flex-row items-center justify-center list-none gap-[22px] tablet:gap-[123px]">
+        <ul className="mt-[53px] flex list-none flex-col items-center justify-center gap-[22px] tablet:flex-row desktop:gap-[123px]">
           <li>
             <a
               href="https://btg-communication.fr/savoir-faire/"

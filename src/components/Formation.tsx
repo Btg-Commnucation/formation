@@ -15,7 +15,7 @@ const Formation = () => {
     <article id="formation" className="mb-[156px] mt-[43px]">
       <div className="flex flex-col items-center justify-center">
         <h2 className="after:z-1 relative max-w-[620px] px-5 text-center text-md font-bold text-white before:absolute before:inset-0 before:z-2 before:mx-auto before:h-full before:w-full before:rotate-178 before:bg-blue before:content-[''] after:absolute after:left-5 after:top-2 after:h-full after:w-full after:rotate-178 after:bg-blue-700 after:content-[''] tablet:text-3xl">
-          <span className="rotate-2 relative z-10 flow-root">
+          <span className="relative z-10 flow-root rotate-2">
             Nos formations
           </span>
         </h2>
@@ -53,7 +53,7 @@ const Formation = () => {
                     currentCategory === category.name
                       ? "border-blue"
                       : "border-transparent"
-                  } h-fit w-fit rounded-43 border px-[24px] py-[14px] text-md font-normal text-blue hover:bg-blue hover:text-white`}
+                  } h-fit w-fit rounded-43 border px-[24px] py-[14px] text-[20px] font-normal text-blue hover:bg-blue hover:text-white tablet:text-md`}
                   key={category.id}
                   onClick={() => setCurrentCategory(category.name)}
                 >

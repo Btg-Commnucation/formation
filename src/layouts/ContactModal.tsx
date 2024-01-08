@@ -85,15 +85,16 @@ const ContactModal = ({ formation }: { formation: Tarticle[] }) => {
       {modal && (
         <section className="fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center overflow-x-hidden overflow-y-scroll bg-white/[86%]">
           <div
-            className={`${
-              status === 200 ? "mt-0" : "mt-[300px]"
-            } relative mx-auto h-fit w-fit max-w-[90%] mobile:mt-0 desktop:w-[1110px]`}
+            className={`dekstop:top-5 relative top-60 mx-auto h-fit w-fit max-w-[90%] mobile:mt-0 tablet:top-10 md:top-40 desktop:w-[1110px] xl:top-0`}
           >
             <div className="absolute bottom-[-5px] right-[-5px] h-full w-full rounded-[10px] border border-blue bg-white tablet:bottom-[-15px] tablet:right-[-20px] tablet:rounded-[85px]"></div>
             <div className="relative w-fit rounded-[10px] bg-blue px-[15px] py-[47px] text-white tablet:rounded-[85px] md:px-[85px] desktop:w-full">
               <X
                 className="absolute right-5 top-2 cursor-pointer tablet:right-20 tablet:top-5"
-                onClick={() => dispatch(setModal(false))}
+                onClick={() => {
+                  dispatch(setModal(false));
+                  document.body.style.overflow = "auto";
+                }}
               />
               <h2
                 className={`${

@@ -24,7 +24,7 @@ const HeroBanner = () => {
             alt="Image de deux cheffes d'entreprises montrant du doigt une bulle de dialogue"
           />
           <div className="flex min-h-[229px] w-[90%] max-w-[632px] items-center justify-center self-end rounded-32 border border-solid border-blue px-[2rem] py-[2rem] tablet:w-fit tablet:py-0 desktop:self-center">
-            <p className="max-w-[492px] text-md leading-8">
+            <p className="mt-[10px] max-w-[492px] text-base leading-8 mobile:mt-0 tablet:text-md">
               Se former aux bonnes pratiques des réseaux sociaux est bien plus
               qu'un semple investissement
             </p>

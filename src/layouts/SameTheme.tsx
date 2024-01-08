@@ -58,7 +58,7 @@ const SameTheme = ({ currentFormation }: { currentFormation: Tarticle[] }) => {
   return (
     <section
       ref={section}
-      className="mx-auto mb-[68px] mt-[88px] flex max-w-[95%] flex-col items-center justify-center gap-[51px] xl:max-w-[1424px]"
+      className="mx-auto mb-[68px] mt-[88px] flex max-w-[90%] flex-col items-center justify-center gap-[51px] tablet:max-w-[95%] xl:max-w-[1424px]"
     >
       <h2 className="rounded-32 bg-yellow px-[20px] py-[15px] text-center text-[27px] font-normal uppercase italic tablet:text-lg desktop:p-[20px]">
         Sur le même thème
