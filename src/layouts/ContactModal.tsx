@@ -105,7 +105,7 @@ const ContactModal = ({ formation }: { formation: Tarticle[] }) => {
                   ? "Merci pour votre demande concernant la formation :"
                   : " Information du / des participants à la formation :"}
               </h2>
-              <strong className="mx-auto mb-[49px] flow-root w-fit text-center text-[25px] font-normal md:text-md">
+              <strong className="mx-auto mb-[49px] mt-[20px] flow-root w-fit text-center text-[25px] font-normal md:text-md">
                 {data.title}
               </strong>
               {status === 200 ? (

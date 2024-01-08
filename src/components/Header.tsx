@@ -4,13 +4,15 @@ import { useDispatch } from "react-redux";
 import { setFormation } from "@/features/posts/formationSlice";
 import { setLoading } from "@/features/loading/loadingSlice";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { setCategories } from "@/features/posts/categoriesSlice";
 import bookIcon from "@/assets/formation.svg";
 import { Button } from "./ui/button";
+import backgroundMobile from "@/assets/header-formation-mobile.svg";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const [windowWidth, setWindowWidth] = useState<number>(0);
 
   const getCategories = async () => {
     try {
@@ -38,6 +40,7 @@ const Header = () => {
 
   useEffect(() => {
     fetchFormations();
+    setWindowWidth(window.innerWidth);
   }, []);
 
   return (
@@ -62,13 +65,13 @@ const Header = () => {
           <div className="z-0 relative h-[708px] w-full overflow-hidden">
             <img
               className="lg:object-fit object-center-bottom absolute bottom-0 mx-auto h-full w-full max-w-full object-cover desktop:overflow-visible lg:relative lg:w-full lg:max-w-[1064px]"
-              src={background}
+              src={windowWidth > 1179 ? background : backgroundMobile}
               alt="Un livre ouvert posé sur une planète"
             />
           </div>
-          <h1 className="absolute left-0 right-0 top-20 mx-auto flex w-fit flex-col text-center text-[25px] font-bold text-white tablet:top-8 tablet:text-4xl desktop:top-20">
+          <h1 className="mobile-sm:text-xl absolute left-0 right-0 top-20 mx-auto flex w-fit flex-col text-center text-[25px] font-bold text-white tablet:top-8 tablet:text-4xl desktop:top-20">
             Formez vous aux{" "}
-            <span className="after:z-1 relative px-5 text-[25px] text-white before:absolute before:inset-0 before:z-2 before:mx-auto before:h-full before:w-full before:rotate-178 before:bg-red-400 before:content-[''] after:absolute after:left-5 after:top-2 after:h-full after:w-full after:rotate-178 after:bg-red-700 after:content-[''] tablet:text-4xl desktop:text-5xl">
+            <span className="after:z-1 mobile-sm:text-xl relative px-5 text-[25px] text-white before:absolute before:inset-0 before:z-2 before:mx-auto before:h-full before:w-full before:rotate-178 before:bg-red-400 before:content-[''] after:absolute after:left-2 after:top-2 after:h-full after:w-full after:rotate-178 after:bg-red-700 after:content-[''] tablet:text-4xl desktop:text-5xl">
               <span className="relative z-10 flow-root rotate-2">
                 Bonnes pratiques
               </span>
