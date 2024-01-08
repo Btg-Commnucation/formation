@@ -53,6 +53,7 @@ const FormationContainer = ({
                 <img
                   src={formation.media.medium_large}
                   className="min-h-[189px] w-full rounded-t-30"
+                  alt={formation.title}
                 />
                 <div className="absolute bottom-[-15px] left-[5px] flex w-full gap-2 tablet:left-[25px] tablet:gap-5">
                   <Badge className="flex h-fit w-fit items-center justify-center rounded-[15px] border-0 bg-white text-[16px] font-normal tablet:text-sm">
