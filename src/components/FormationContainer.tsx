@@ -52,7 +52,7 @@ const FormationContainer = ({
               <CardHeader className="relative p-0">
                 <img
                   src={formation.media.medium_large}
-                  className="min-h-[189px] w-full rounded-t-30"
+                  className="obect-center min-h-[189px] w-full rounded-t-30 object-cover"
                   alt={formation.title}
                 />
                 <div className="absolute bottom-[-15px] left-[5px] flex w-full gap-2 tablet:left-[25px] tablet:gap-5">

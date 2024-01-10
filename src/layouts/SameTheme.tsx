@@ -70,7 +70,7 @@ const SameTheme = ({ currentFormation }: { currentFormation: Tarticle[] }) => {
               <CardHeader className="relative p-0">
                 <img
                   src={formation.media.medium_large}
-                  className="min-h-[189px] w-full rounded-t-30"
+                  className="min-h-[189px] w-full rounded-t-30 object-cover object-center"
                 />
                 <div className="absolute bottom-[-15px] left-[25px] flex w-full gap-5">
                   <Badge className="flex h-fit w-fit items-center justify-center rounded-[15px] border-0 bg-white text-[16px] font-normal tablet:text-sm">
